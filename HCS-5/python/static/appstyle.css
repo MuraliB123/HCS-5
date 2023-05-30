@@ -1,0 +1,188 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  select,
+  input[type="date"],
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+.view {
+    background-color: #FF6F00; /* Orange hover color */
+    color: #fff;
+    padding: 4px;
+}
+#searchResults {
+    margin-top: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  tr:hover {
+    background-color: #f5f5f5;
+  }
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+
+  h2 {
+    margin-top: 40px;
+  }
+
+  pre {
+    padding: 10px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    white-space: pre-wrap;
+  }
+
+  .appointment-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  height: 250px;
+}
+
+.label {
+  font-weight: bold;
+  margin-bottom: 1px;
+}
+
+.value {
+  margin-bottom: 10px;
+}
+/* CSS for top navigation menu */
+.topnav {
+background-color: #239f85; /* Blue background color */
+overflow: hidden;
+}
+
+.topnav a {
+float: left;
+color: #fff;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+font-size: 17px;
+}
+
+.topnav a:hover {
+background-color: #FF6F00; /* Orange hover color */
+color: #fff;
+}
+
+.topnav a.active {
+background-color: #4CAF50;
+color: #fff;
+}
+
+
+
+.area1 {
+margin: 30px 20px 30px 20px;
+display: flex;
+}
+.con {
+margin-left: 12em;
+}
+
+.topnav a.rightmost {
+margin-left: 110px;
+background-color: #FF6F00; /* Orange hover color */
+color: #fff;
+}
+#searchResults {
+  display: none;
+  margin-top: 20px;
+}
+
+#searchResults table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#searchResults th,
+#searchResults td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ddd;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+#searchResults th {
+  background-color: #f2f2f2;
+}
+
+
+
+#viewScheduleButton {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+}
+
+#viewScheduleButton:hover {
+  background-color: #45a049;
+}

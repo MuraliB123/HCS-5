@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+	<html lan="en">
+	<head>
+	<title>FEEDBACK</title>
+	<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	   
+		<meta name="theme-color" content="rgb(11, 78, 179)">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="../i/f/ms-icon-144x144.png">
+		<meta name="theme-color" content="#ffffff">
+		<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<script>
+			function category(){
+				toggleSecondDropdown();
+				fetchSecondDropdownData();
+			}
+			function fetchSecondDropdownData() {
+				var selectedTable = document.getElementById('first-dropdown').value;
+				
+				if(selectedTable == 'Doctor')
+				{
+				// Send an AJAX request to the Flask route
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', '/get_data1?selected_table=' + encodeURIComponent(selectedTable), true);
+				xhr.onreadystatechange = function() {
+					if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+						var data = JSON.parse(xhr.responseText);
+						var secondDropdown = document.getElementById('second-dropdown');
+						secondDropdown.innerHTML = '';
+	
+						// Populate the options in the second dropdown
+						for (var i = 0; i < data.length; i++) {
+							var option = document.createElement('option');
+							option.textContent = data[i];
+							option.value = data[i];
+							secondDropdown.appendChild(option);
+						}
+					}
+				};
+				xhr.send();
+			}
+			}
+
+			function toggleSecondDropdown() {
+    var firstDropdown = document.getElementById('first-dropdown');
+    var secondDropdown = document.getElementById('s-dropdown');
+	var thirdDropdown = document.getElementById('t-dropdown');
+    // Check the selected option in the first dropdown
+    var selectedOption = firstDropdown.options[firstDropdown.selectedIndex].value;
+
+    // Toggle the visibility of the second dropdown
+    if (selectedOption === 'Doctor') {
+        secondDropdown.style.display = 'block';  // Show the second dropdown
+    } else {
+        secondDropdown.style.display = 'none';
+		thirdDropdown.style.display = 'none';
+		   // Hide the second and third dropdown
+    }
+}
+
+function speciality(){
+				toggleThirdDropdown();
+				fetchThirdDropdownData();
+			}
+
+
+			function fetchThirdDropdownData() {
+    var selectedValue = document.getElementById('second-dropdown').value;
+    var secondDropdown = document.getElementById('third-dropdown');
+
+    // Clear existing options
+    secondDropdown.innerHTML = '';
+
+    // Send an AJAX request to fetch the attribute values
+    fetch(`/get_data2/${selectedValue}`)
+        .then(response => response.json())
+        .then(data => {
+            // Iterate over the attribute values and create dropdown options
+            data.forEach(attributeValue => {
+                var option = document.createElement('option');
+                option.text = attributeValue;
+                option.value = attributeValue;
+                secondDropdown.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.log('Error:', error);
+        });
+}
+
+
+			
+
+			function toggleThirdDropdown() {
+    var firstDropdown = document.getElementById('second-dropdown');
+    var secondDropdown = document.getElementById('t-dropdown');
+	var category = document.getElementById('first-dropdown');
+
+    // Check the selected option in the first dropdown
+    var selectedOption = firstDropdown.options[firstDropdown.selectedIndex].value;
+
+    // Toggle the visibility of the second dropdown
+    
+        secondDropdown.style.display = 'block';  // Show the second dropdown
+	
+		
+	}
+
+// Execute the function on page load
+//window.onload = toggleSecondDropdown;
+
+
+		</script>
+	
+		
+	<style>
+	.page{
+		max-width: 1280px;
+		margin:auto;
+		background-color:lightskyblue;
+		border:10px solid black;
+	}
+	
+	.feed{
+		text-align:center;
+		height: 50px;
+		border-bottom:10px solid black;
+	}
+
+	#back{
+		background-color:lightskyblue;
+		border:5px solid black;
+		cursor: pointer;
+	}
+	.outer{	
+		height:515px;
+		max-width:100%;
+		position:relative;
+		margin:20px;
+	}
+	.fill-form {
+		position:absolute;
+		top:45%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background-color:yellow;
+		width:50%;
+		padding-bottom:15px;
+		text-align:center;
+		padding-top:10px;
+		border:5px solid black;
+	}
+	.submit{
+	top:115%;
+	padding:10px;
+	
+	}
+	select,input {
+	  width: 200px;
+	  height: 30px;
+	  border:2px solid black;
+	}
+	textarea{
+	height:50px;
+	width:200px;
+	  border:2px solid black;
+	}
+	
+	</style>
+	</head>
+	
+	<body style="background-color:orangered;">
+	<div class="page">
+	<div class="menu"></div>
+	<div class="feed"><h1>POST FEEDBACK</h1></div>
+	
+	<div class="outer">
+	<div class="fill-form" >
+	
+	<form action="/feedback" class="form" method="POST" enctype="multipart/form-data" >
+	
+	<!--<label for="mail"><h3>E-MAIL</h3></label>
+	<input type="text" id="mail" name="uemail" />-->
+	
+	<label for="first-dropdown"><h3><b>CATEGORY</b></h3></label>
+	<select id="first-dropdown" name="option" onchange="category()" required>
+	<option value="none" selected disabled>Select a category</option>
+	<option value="Doctor">Doctor</option>
+	<option value="Health Assessment">Health Assessment</option>
+	<option value="Appointment">Appointment</option>
+	<option value="Website">Website</option>
+	<option value="Others">Others</option>
+	</select>
+	
+	<div id="s-dropdown" style="display:none;text-align:center;">
+	<label for="second-dropdown"><h3><b>SPECIALIZED FIELD</b></h3></label>
+	<select id="second-dropdown" name="field" onchange="speciality()">
+	</select>
+	
+	</div>
+	<!--<option value=""></option>-->
+	
+	<div id="t-dropdown" style="display:none;text-align:center;">
+	<label for="third-dropdown"><h3><b>DOCTOR NAME</b></h3></label>
+	<select id="third-dropdown" name="docname"></select>
+	
+	
+	</div>
+	
+	<label for="content"><h3><b>YOUR FEEDBACK</b></h3></label>
+	<textarea id="content" name="ucontent" placeholder="Write a review"   required></textarea>
+	<br/><br/>
+	<div class="fill-form submit">
+	<input type="submit" name="submit" id="submit" value="submit" />
+	</div>
+	</form>
+	
+	
+	</div>
+	</div>
+	
+	</div>
+	<br/>
+	<div style="text-align: center;"> 
+		{% if count == 'pat' %}
+			<a href="http://127.0.0.1:5000/profile"><button id="back"><h2>BACK</h2></button></a>
+		{% elif count == 'doc' %}
+			<a href="http://127.0.0.1:5000/dprofile1"><button id="back"><h2>BACK</h2></button></a>
+		{% endif %}
+		</div> 
+	</body>
+	</html>

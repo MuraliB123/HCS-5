@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RBC CHART</title>
+    <style>
+        .page{
+       max-width: 1280px;
+       margin:auto;
+       background-color:lightskyblue;
+       border:10px solid black;
+       text-align:center;
+       height:auto;
+
+   }
+   .header{
+   border-bottom:10px solid black;
+ }
+ .report{
+   background-color:orangered;
+   border-top:10px solid black;
+   border-bottom:10px solid black;
+   padding:10px;
+ }
+ .app{
+   background-color:yellow;
+   width: 400px;
+   height: 60px;
+   cursor: pointer;
+   
+ }
+ #back{
+       background-color:lightskyblue;
+       border:5px solid black;
+       cursor: pointer;
+   }
+   </style>
+</head>
+<body style="background-color:lightsalmon;">
+    <div class="page">
+        <div class="header"><h1>RED BLOOD CELLS ANALYSIS - REPORT</h1></div>
+        <div class="graph">
+            <br/>
+
+    <img src="data:image/png;base64,{{ image_base64_6 }}" alt="Chart">
+    
+</div>
+<br/>
+<div class="report">
+   
+        {% if ((urbc >= 4000000) and (urbc <= 5500000)) %}
+            <h1>Your RBC count is normal</h1>
+        {% elif (urbc < 4000000) %}
+            <h1>Your RBC count is lower than normal</h1>
+        {% elif (urbc > 5500000) %}
+            <h1>Your RBC count is higher than normal</h1>
+        {% endif %}
+     
+    </div>
+    <br/>
+  
+    <div ><a href="http://127.0.0.1:5000/appointments"><button class="app"><h2>BOOK APPOINTMENT</h2></button></a>
+    </div>
+    <br/>
+</div>
+<br/><br/>
+    <div style="text-align: center;"> 
+   
+        <a href="http://127.0.0.1:5000/button"><button id="back"><h2>BACK</h2></button></a>
+    
+    </div> 
+
+</body>
+</html>

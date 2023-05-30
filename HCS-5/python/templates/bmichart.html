@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BMI CHART</title>
+    <style>
+        .page{
+       max-width: 1280px;
+       margin:auto;
+       background-color:lightskyblue;
+       border:10px solid black;
+       text-align:center;
+       height:auto;
+
+   }
+   .header{
+   border-bottom:10px solid black;
+ }
+ .report{
+   background-color:orangered;
+   border-top:10px solid black;
+   border-bottom:10px solid black;
+   padding:10px;
+ }
+ .app{
+   background-color:yellow;
+   width: 400px;
+   height: 60px;
+   cursor: pointer;
+   
+ }
+ #back{
+       background-color:lightskyblue;
+       border:5px solid black;
+       cursor: pointer;
+   }
+   </style>
+</head>
+<body style="background-color:lightsalmon;">
+    <div class="page">
+        <div class="header"><h1>BODY MASS INDEX ANALYSIS - REPORT</h1></div>
+        <div class="graph">
+            <br/>
+
+    <img src="data:image/png;base64,{{ image_base64_5 }}" alt="Chart">
+</div>
+<br/>
+<div class="report">
+        {% if ((ubmi >= 18.5) and (ubmi <= 24.9)) %}
+            <h1>Your bmi is normal</h1>
+        {% elif ((ubmi >= 30) and (ubmi <= 34.9)) %}
+            <h1>Your are obese</h1>
+        {% elif (ubmi > 35) %}
+            <h1>Your are extremely obese</h1>
+        {% elif (ubmi < 18.5) %}
+            <h1>You are underweight</h1>
+        {%endif%}
+   
+    </div>
+    <br/>
+  
+    <div ><a href="http://127.0.0.1:5000/appointments"><button class="app"><h2>BOOK APPOINTMENT</h2></button></a>
+    </div>
+    <br/>
+</div>
+<br/><br/>
+    <div style="text-align: center;"> 
+   
+        <a href="http://127.0.0.1:5000/button"><button id="back"><h2>BACK</h2></button></a>
+    
+    </div> 
+
+</body>
+</html>

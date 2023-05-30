@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BODY MASS INDEX</title>
+		<style>
+			.page{
+		max-width: 1280px;
+		margin:auto;
+		background-color:lightskyblue;
+		border:10px solid black;
+        text-align:center;
+	}
+	.input{
+		position:absolute;
+		top:40%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background-color:yellow;
+		width:50%;
+		padding-bottom:15px;
+		text-align:center;
+		padding-top:10px;
+		border:5px solid black;
+	}
+	.outer{	
+		height:450px;
+		max-width:100%;
+		position:relative;
+		margin:20px;
+	}
+	.submit{
+	top:400px;
+	padding:10px;
+	padding-left: 0px;
+	padding-right: 0px;
+	}
+.header{
+    border-bottom:10px solid black;
+  }
+  #back{
+		background-color:lightskyblue;
+		border:5px solid black;
+		cursor: pointer;
+	}
+	input {
+	  width: 200px;
+	  height: 30px;
+	  border:2px solid black;
+	}
+		</style>
+		<script>
+			function calc()
+			{
+			var x = parseInt(document.getElementById("height").value);
+			var y = parseInt(document.getElementById("weight").value);
+			var z = (y)/(x*x*0.0001);
+			document.getElementById("bmi").value = z;
+			}
+		</script>
+    </head>
+    <body style="background-color:orangered;">
+        <div class="page" style="text-align:center;">
+	
+	<div class="menu"></div>
+	<div class="header"><h1>BODY MASS INDEX</h1></div>
+    <div class="outer">
+		<div class="form">  
+	<form action="/bmi" method="POST" enctype="multipart/form-data">
+        <div class="input">
+	<label for="height"><h2>HEIGHT(in cm)</h2></label>
+		<input type="number" id="height" name="height" min="50" required>
+	<label for="weight"><h2>WEIGHT(in kg)</h2></label>
+		<input type="number" id="weight" name="weight" onkeyup="calc()" min="0" required>
+	<label for="bmi"><h2>BMI(in kg/m2)</h2></label>
+		<input type="text" id="bmi" name="bmi" >
+	</div>
+		    <br>
+			<div class="input submit">
+	<input type="submit" value="submit" name="submit" id="submit">
+	</div>
+</form>
+</div>   
+    
+</div>
+</div>
+<br/><br/>
+<div style="text-align: center;"> 
+   
+        <a href="http://127.0.0.1:5000/button"><button id="back"><h2>BACK</h2></button></a>
+    
+    </div> 
+    </body>
+    </html>
+    

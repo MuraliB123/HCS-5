@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BLOOD PRESSURE LEVEL</title>
+        <script>
+			function calcsys()
+			{
+			var x = parseInt(document.getElementById("sys").value);			
+			var rounded = Math.round(x);
+			document.getElementById("sys").value = rounded;
+			}
+            function calcdia()
+			{
+			var y = parseInt(document.getElementById("dia").value);			
+			var rounded = Math.round(y);
+			document.getElementById("dia").value = rounded;
+			}
+		</script>
+		<style>
+			.page{
+		max-width: 1280px;
+		margin:auto;
+		background-color:lightskyblue;
+		border:10px solid black;
+        text-align:center;
+	}
+	.input{
+		position:absolute;
+		top:35%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background-color:yellow;
+		width:50%;
+		padding-bottom:15px;
+		text-align:center;
+		padding-top:10px;
+		border:5px solid black;
+	}
+	.outer{	
+		height:400px;
+		max-width:100%;
+		position:relative;
+		margin:20px;
+	}
+	.submit{
+	top:350px;
+	padding:10px;
+	padding-left: 0px;
+	padding-right: 0px;
+	}
+.header{
+    border-bottom:10px solid black;
+  }
+  #back{
+		background-color:lightskyblue;
+		border:5px solid black;
+		cursor: pointer;
+	}
+	input {
+	  width: 200px;
+	  height: 30px;
+	  border:2px solid black;
+	}
+		</style>
+        </head>
+        <body style="background-color:orangered;">
+            	<div class="page" style="text-align:center;">
+	
+	<div class="menu"></div>
+	<div class="header"><h1>BLOOD PRESSURE LEVEL</h1></div>
+	<div class="outer">
+	<div class="form">
+        <form action="/bp" method="POST" enctype="multipart/form-data">
+            <div class="input">
+            <label for="sys"><h2>SYSTOLIC BLOOD PRESSURE (in mm Hg)</h2></label>
+                <input type="number" id="sys" name="sysbp" min="0" onchange="calcsys()" >
+            <label for="dia"><h2>DIASTOLIC BLOOD PRESSURE (in mm Hg)</h2></label>
+                <input type="number" id="dia" name="diabp" min="0"  onchange="calcdia()" >
+			</div>
+            <br/>
+            <div class="input submit">
+                <input type="submit" value="submit" name="submit" id="submit">
+	</div>
+</form>
+</div>   
+    
+</div>
+</div>
+<br/><br/>
+<div style="text-align: center;"> 
+   
+        <a href="http://127.0.0.1:5000/button"><button id="back"><h2>BACK</h2></button></a>
+    
+    </div> 
+</body>
+</html>

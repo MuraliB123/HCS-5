@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BP CHART</title>
+    <style>
+         .page{
+		max-width: 1280px;
+		margin:auto;
+		background-color:lightskyblue;
+		border:10px solid black;
+        text-align:center;
+        height:auto;
+
+	}
+    .header{
+    border-bottom:10px solid black;
+  }
+  .report{
+    background-color:orangered;
+    border-top:10px solid black;
+    border-bottom:10px solid black;
+    padding:10px;
+  }
+  .app{
+    background-color:yellow;
+    width: 400px;
+	height: 60px;
+    cursor: pointer;
+    
+  }
+  #back{
+		background-color:lightskyblue;
+		border:5px solid black;
+		cursor: pointer;
+	}
+    </style>
+</head>
+<body style="background-color:lightsalmon;">
+    <div class="page">
+        <div class="header"><h1>BLOOD PRESSURE ANALYSIS - REPORT</h1></div>
+        <div class="graph">
+            <br/>
+   <img src="data:image/png;base64,{{ image_base64_1 }}" alt="Chart">
+   </div>
+   <br/>
+<div class="graph">
+   <img src="data:image/png;base64,{{ image_base64_9 }}" alt="Chart">
+</div>
+<br/>
+<div class="report">
+    {% if (usysbp < 90) %}
+        <h1>You have low Blood Pressure</h1>
+    {% elif (usysbp < 120 and udiabp < 80) %}
+        <h1>Your Blood Pressure level is Normal</h1>
+    {% elif ((usysbp >= 120 and usysbp <= 129) and udiabp < 80) %}
+        <h1>You are at the stage of Prehypertension</h1>
+    {% elif ((usysbp >= 130 and usysbp <= 139) or (udiabp >= 80 and udiabp <= 89)) %}
+        <h1>You are at the 1st stage of Hypertension (HIGH BLOOD PRESSURE)</h1>
+    {% elif ((usysbp >= 140 and usysbp < 180) or (udiabp >= 90 and udiabp <= 120)) %}
+        <h1>You are at the 2nd stage of Hypertension (HIGH BLOOD PRESSURE)</h1>
+    {% elif ((usysbp >= 180 or udiabp > 120) or (usysbp >= 180 and udiabp > 120)) %}
+        <h1>You are at hypertensive crisis.</h1>
+        <h1>You should consult your doctor immediately.</h1>
+    {%endif%}
+</div>
+    <br/>
+  
+    <div ><a href="http://127.0.0.1:5000/appointments"><button class="app"><h2>BOOK APPOINTMENT</h2></button></a>
+    </div>
+    <br/>
+</div>
+<br/><br/>
+    <div style="text-align: center;"> 
+   
+        <a href="http://127.0.0.1:5000/button"><button id="back"><h2>BACK</h2></button></a>
+    
+    </div> 
+
+</body>
+</html>

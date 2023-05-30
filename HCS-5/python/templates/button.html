@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HEALTH ANALYSIS</title>
+    
+<style>
+    .page{
+		max-width: 1280px;
+		margin:auto;
+		background-color:lightskyblue;
+		border:10px solid black;
+        text-align:center;
+	}
+  .my-button {
+    background-color: yellow;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+  }
+  .header{
+    border-bottom:10px solid black;
+  }
+  #back{
+		background-color:lightskyblue;
+		border:5px solid black;
+		cursor: pointer;
+	}
+ 
+</style>
+    </head>
+
+    <body style="background-color:orangered;">
+        <div class="page">
+        <div class="header"><h1>HEALTH ANALYSIS</h1></div>
+        <div class="button" >
+        <br/><div class="bp"> <button class="my-button" onclick="openbp()"><h1>BLOOD PRESSURE</h1></button></div><br/>
+        <br/><div class="bs"> <button class="my-button" onclick="openbs()"><h1>BLOOD SUGAR</h1></button></div><br/>
+        <br/><div class="bc"> <button class="my-button" onclick="openbc()"><h1>BLOOD CHOLESTEROL</h1></button></div><br/>
+        <br/><div class="bmi"> <button class="my-button" onclick="openbmi()"><h1>BMI</h1></button></div><br/>
+        <br/><div class="rr"> <button class="my-button" onclick="openrr()"><h1>RESPIRATORY RATE</h1></button></div><br/>
+        <br/><div class="rbc"> <button class="my-button" onclick="openrbc()"><h1>RED BLOOD CELLS</h1></button></div><br/>
+        <br/><div class="wbc"> <button class="my-button" onclick="openwbc()"><h1>WHITE BLOOD CELLS</h1></button></div><br/>
+        <br/><div class="plat"> <button class="my-button" onclick="openplat()"><h1>PLATELETS</h1></button></div><br/>
+
+    </div>
+</div>
+<br/><br/>
+<div style="text-align: center;"> 
+   
+        <a href="http://127.0.0.1:5000/index"><button id="back"><h2>BACK</h2></button></a>
+    
+    </div> 
+    <script>
+    function openbp() {
+        window.location.href = "http://127.0.0.1:5000/bp";
+       
+    }
+    function openbs(){
+        window.location.href = "http://127.0.0.1:5000/bs";
+       
+    }
+    function openbc(){
+        window.location.href = "http://127.0.0.1:5000/bc";
+        
+    }
+    function openbmi(){
+        window.location.href = "http://127.0.0.1:5000/bmi";
+         
+    }
+     function openrr(){
+        window.location.href = "http://127.0.0.1:5000/rr";
+     }
+     function openrbc(){
+        window.location.href = "http://127.0.0.1:5000/rbc";
+       
+     }
+     function openwbc(){
+        window.location.href = "http://127.0.0.1:5000/wbc";
+         
+     }
+     function openplat(){
+        window.location.href = "http://127.0.0.1:5000/plat";
+       
+     }
+     
+    </script>
+
+    </body>
+</html>

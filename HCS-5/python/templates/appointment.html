@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Appointment Form</title>
+  <link rel="stylesheet" href="static/appstyle.css">
+</head>
+<body bgcolor="#239f85">
+  <div class="topnav" id="myTopnav">
+    <a href="http://127.0.0.1:5000/index">About</a>
+    <a href="http://127.0.0.1:5000/search">Search</a>
+    <a href="http://127.0.0.1:5000/appointments">Book Appointments</a>
+    <a href="http://127.0.0.1:5000/index">Home</a>
+    <a href="http://127.0.0.1:5000/profile">Profile</a>
+    <a class="rightmost" href="#">Appointment Form</a>
+  </div>
+
+<div class="area1">
+  <div class="im">
+    <img src="static\logo.png" width="400px" height="400px">
+   </div>
+ 
+ <div class="con">
+  
+  <form id="appointmentForm" action="/appointments" method="POST" enctype="multipart/form-data">
+    
+
+    <label for="domain">Domain:</label>
+    <select id="domain" name="domain" required>
+       <option value="">Select a domain</option>
+       <option value="cardio">Cardiologist</option>
+       <option value="neuro">Neurologist</option>
+       <option value="pulmo">Pulmonologist</option>
+       <option value="dermato">Dermatologist</option>
+       <option value="opthal">Ophthalmologist</option>
+       <option value="pedia">Pediatrician</option>
+    </select>
+
+   <label for="doctor">Doctor:</label>
+     <select id="doctor" name="doctor" required>
+        <option value="">Select a doctor</option>
+    </select>
+    
+
+    <label for="date">Date:</label>
+    <input type="text" id="date" name="date" required>
+
+    <label for="time">Time:</label>
+    <select id="time" name="time" required>
+       <option value="9:00AM">9:00AM</option>
+       <option value="10:00AM">10:00AM</option>
+       <option value="2:00PM">2:00PM</option>
+       <option value="3:00PM">3:00PM</option>
+   </select>
+
+    <input type="submit" value="Submit">
+  </form>
+   </div>
+</div>
+<div class="result">
+  <button id="viewScheduleButton">View My Schedule</button><br><br>
+  <div id="searchResults" style="display: none;">
+    <table>
+      <thead>
+          <tr>
+              <th>PatientName</th>
+              <th>DoctorName</th>
+              <th>Domain</th>
+              <th>Date</th>
+              <th>ID</th>
+              <th>Status</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for amt in amts %}
+          <tr>
+              <td>{{ amt.pat_name }}</td>
+              <td>{{ amt.doc_name }}</td>
+              <td>{{ amt.doc_domain }}</td>
+              <td>{{ amt.app_date }}</td>
+              <td>{{ amt.app_id }}</td>
+              <td>{{ amt.status }}</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+
+ </div>
+
+</div>
+
+<script>
+  
+const doctorsByDomain = {
+  cardio: ["John Doe"],
+  neuro: ["Emily Davis"],
+  pulmo: ["Jane Smith"],
+  dermato:["Michael Wilson"],
+  opthal:["Robert Johnson"],
+  pedia:["Sarah Thompson"]
+};
+
+
+function updateDoctorsOptions() {
+  const domainSelect = document.getElementById("domain");
+  const doctorSelect = document.getElementById("doctor");
+  const selectedDomain = domainSelect.value;
+  const doctors = doctorsByDomain[selectedDomain] || [];
+
+  
+  doctorSelect.innerHTML = '<option value="">Select a doctor</option>';
+
+  
+  doctors.forEach(doctor => {
+    const option = document.createElement("option");
+    option.value = doctor;
+    option.text = doctor;
+    doctorSelect.appendChild(option);
+  });
+}
+
+
+const domainSelect = document.getElementById("domain");
+domainSelect.addEventListener("change", updateDoctorsOptions);
+
+
+updateDoctorsOptions();
+
+    document.getElementById("viewScheduleButton").addEventListener("click", function() {
+        var searchResultsDiv = document.getElementById("searchResults");
+        if (searchResultsDiv.style.display === "none") {
+            searchResultsDiv.style.display = "block";
+        } else {
+            searchResultsDiv.style.display = "none";
+        }
+    });
+
+
+</script>
+</body>
+</html>
